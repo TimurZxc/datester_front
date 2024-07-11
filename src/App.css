@@ -6,5 +6,23 @@
 
 body{
   background: var(--tg-theme-bg-color);
-  color: var(--tg-theme-text-color)
+  color: var(--tg-theme-text-color);
+  
+}
+
+.game-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap:40px;
+}
+
+.tap{
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
 }

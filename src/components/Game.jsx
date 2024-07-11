@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import image from "../images/scale_1200.png";
 function Game() {
   const [score, setScore] = useState(0);
 
@@ -9,20 +10,8 @@ function Game() {
   return (
     <div className="game-container">
       <h1>Datester</h1>
-      <div
-        className="clicker"
-        onClick={handleClick}
-        style={{
-          width: "200px",
-          height: "200px",
-          backgroundColor: "lightblue",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          cursor: "pointer",
-        }}
-      >
-        Click me!
+      <div onClick={handleClick}>
+        <img className="tap" src={image} alt="Click" />
       </div>
       <p>Total Score: {score}</p>
     </div>
