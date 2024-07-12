@@ -69,7 +69,7 @@ progress::-webkit-progress-value {
   padding: 20px 0;
   width: 100%;
   cursor: pointer;
-  background-color: white;
+  background-color: var(--tg-theme-bg-color);
   border: var(--tg-theme-button-color) 1px solid;
   outline: none;
   border-radius: 10px;
