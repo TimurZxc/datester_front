@@ -62,7 +62,6 @@ progress::-webkit-progress-value {
   margin-top: 30px;
   display: flex;
   justify-content: space-around;
-  gap: 40px;
   width: 100%;
 }
 .bottom-nav-item{
@@ -81,5 +80,6 @@ progress::-webkit-progress-value {
 
 .bottom-nav-item button:active{
   border-radius: 10px;
+  color: var(--tg-theme-text-color);
   background-color: var(--tg-theme-button-color);
 }
