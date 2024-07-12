@@ -36,8 +36,26 @@ body{
   border-radius: 50%;
   display: flex;
   justify-content: center;
+  position: relative;
+
+}
+.inscription {
+  position: absolute;
+  color: var(--tg-theme-button-color);
+  font-size: 20px;
+  animation: fadeOut 1s forwards;
 }
 
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
 progress[value] {
   /* Reset the default appearance */
   -webkit-appearance: none;

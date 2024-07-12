@@ -10,6 +10,7 @@ function Game() {
     const savedStamina = localStorage.getItem('stamina');
     return savedStamina !== null ? JSON.parse(savedStamina) : 100;
   });
+  const [inscriptions, setInscriptions] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,7 +23,7 @@ function Game() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleClick = () => {
+  const handleClick = (event) => {
     if (stamina > 0) {
       const newScore = score + 1;
       const newStamina = stamina - 1;
@@ -30,17 +31,41 @@ function Game() {
       setStamina(newStamina);
       localStorage.setItem('score', JSON.stringify(newScore));
       localStorage.setItem('stamina', JSON.stringify(newStamina));
+
+      const clickX = event.clientX;
+      const clickY = event.clientY;
+      const newInscription = {
+        id: Date.now(),
+        x: clickX + (Math.random() * 20 - 10), // random offset
+        y: clickY + (Math.random() * 20 - 10), // random offset
+      };
+      setInscriptions(prevInscriptions => [...prevInscriptions, newInscription]);
+
+      setTimeout(() => {
+        setInscriptions(prevInscriptions =>
+          prevInscriptions.filter(inscription => inscription.id !== newInscription.id)
+        );
+      }, 1000); // remove after 1 second
     }
   };
 
   return (
-    <div className="game-container">
+    <div className="game-container" onClick={handleClick}>
       <h1>Datester</h1>
-      <div onClick={handleClick}>
+      <div>
         <img className="tap" src={image} alt="Click" />
       </div>
       <p>Total Score: {score}</p>
       <progress value={stamina} max="100" className="stamina-bar"></progress>
+      {inscriptions.map(inscription => (
+        <span
+          key={inscription.id}
+          className="inscription"
+          style={{ left: `${inscription.x}px`, top: `${inscription.y}px` }}
+        >
+          +1
+        </span>
+      ))}
     </div>
   );
 }
